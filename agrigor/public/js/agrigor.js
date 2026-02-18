@@ -1,4 +1,3 @@
-
 function showToast(title, msg, type = 'error', duration = 4500) {
   const container = document.getElementById('toastContainer');
   if (!container) return;
@@ -35,7 +34,6 @@ function showToast(title, msg, type = 'error', duration = 4500) {
   if (duration > 0) setTimeout(dismiss, duration);
 }
 
-/* ── Inline Alert ── */
 function showInlineAlert(msg, type = 'error') {
   const box  = document.getElementById('inlineAlert');
   const icon = document.getElementById('inlineAlertIcon');
@@ -47,12 +45,12 @@ function showInlineAlert(msg, type = 'error') {
     ? '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'
     : '<polyline points="20 6 9 17 4 12"/>';
 }
+
 function hideInlineAlert() {
   const box = document.getElementById('inlineAlert');
   if (box) box.className = 'inline-alert';
 }
 
-/* ── Field Validation ── */
 function setFieldError(inputId, errId, show, msg = null) {
   const inp = document.getElementById(inputId);
   const err = document.getElementById(errId);
@@ -61,9 +59,11 @@ function setFieldError(inputId, errId, show, msg = null) {
   err.classList.toggle('show', show);
   if (msg) err.textContent = msg;
 }
-function clearField(inputId, errId) { setFieldError(inputId, errId, false); }
 
-/* ── Loading state ── */
+function clearField(inputId, errId) { 
+  setFieldError(inputId, errId, false); 
+}
+
 function setLoading(btnId, on, loadingText = 'Please wait…', defaultText = null) {
   const btn = document.getElementById(btnId);
   if (!btn) return;
@@ -71,12 +71,15 @@ function setLoading(btnId, on, loadingText = 'Please wait…', defaultText = nul
   btn.classList.toggle('loading', on);
   const textEl = btn.querySelector('.btn-text');
   if (textEl) {
-    if (on) { btn.dataset.defaultText = textEl.textContent; textEl.textContent = loadingText; }
-    else     { textEl.textContent = defaultText || btn.dataset.defaultText || 'Submit'; }
+    if (on) { 
+      btn.dataset.defaultText = textEl.textContent; 
+      textEl.textContent = loadingText; 
+    } else { 
+      textEl.textContent = defaultText || btn.dataset.defaultText || 'Submit'; 
+    }
   }
 }
 
-/* ── Password Toggle ── */
 function initPasswordToggle(inputId, btnId, iconId) {
   const btn = document.getElementById(btnId);
   if (!btn) return;
@@ -91,15 +94,15 @@ function initPasswordToggle(inputId, btnId, iconId) {
   });
 }
 
-/* ── Password Strength ── */
 function checkPasswordStrength(password) {
   let score = 0;
-  if (password.length >= 8)              score++;
-  if (/[A-Z]/.test(password))            score++;
-  if (/[0-9]/.test(password))            score++;
-  if (/[^A-Za-z0-9]/.test(password))     score++;
-  return score; // 0-4
+  if (password.length >= 8) score++;
+  if (/[A-Z]/.test(password)) score++;
+  if (/[0-9]/.test(password)) score++;
+  if (/[^A-Za-z0-9]/.test(password)) score++;
+  return score;
 }
+
 function updateStrengthBar(barId, labelId, password) {
   const bar   = document.getElementById(barId);
   const label = document.getElementById(labelId);
@@ -108,10 +111,12 @@ function updateStrengthBar(barId, labelId, password) {
   bar.className = `strength-bar s${score}`;
   const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
   const colors = ['', '#ff6b6b', '#d4a373', '#66bb6a', '#2e7d32'];
-  if (label) { label.textContent = labels[score] || ''; label.style.color = colors[score]; }
+  if (label) { 
+    label.textContent = labels[score] || ''; 
+    label.style.color = colors[score]; 
+  }
 }
 
-/* ── URL Params (OAuth redirects) ── */
 function handleUrlParams() {
   const params  = new URLSearchParams(window.location.search);
   const error   = params.get('error');
@@ -124,6 +129,7 @@ function handleUrlParams() {
     session_expired: 'Your session expired. Please sign in again.',
     unauthorized:    'You must be logged in to access that page.',
   };
+
   const successMap = {
     registered: 'Account created! Please sign in.',
     verified:   'Email verified! You can now sign in.',
@@ -136,21 +142,25 @@ function handleUrlParams() {
     showInlineAlert(text, 'error');
     showToast('Notice', text, 'error');
   }
+
   if (success) {
     const text = successMap[success] || msg || 'Success!';
     showInlineAlert(text, 'success');
     showToast('', text, 'success');
   }
-  if (error || success) window.history.replaceState({}, '', window.location.pathname);
+
+  if (error || success) {
+    window.history.replaceState({}, '', window.location.pathname);
+  }
 }
 
-/* ── Google OAuth redirect ── */
 function googleSignIn(url = '/auth/google') {
   showToast('Redirecting', 'Taking you to Google sign-in…', 'info', 2500);
-  setTimeout(() => { window.location.href = url; }, 600);
+  setTimeout(() => { 
+    window.location.href = url; 
+  }, 600);
 }
 
-/* ── Logo SVG (shared) ── */
 const LOGO_SVG = `
   <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M17 28V10" stroke="#fefae0" stroke-width="2" stroke-linecap="round"/>
@@ -160,7 +170,6 @@ const LOGO_SVG = `
     <path d="M10 29 Q17 25 24 29" stroke="#a5d6a7" stroke-width="1.5" stroke-linecap="round" fill="none"/>
   </svg>`;
 
-/* ── Google G SVG ── */
 const GOOGLE_SVG = `
   <svg class="google-logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
     <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -169,5 +178,4 @@ const GOOGLE_SVG = `
     <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
   </svg>`;
 
-/* Run URL param check on every page load */
 document.addEventListener('DOMContentLoaded', handleUrlParams);
