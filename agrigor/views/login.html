@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agrigor – Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/agrigor.css"/>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+<div class="toast-container" id="toastContainer"></div>
+
+<div class="wheat-deco left">
+  <div class="stalk" style="height:175px;animation-delay:0s"></div>
+  <div class="stalk" style="height:215px;animation-delay:0.28s"></div>
+  <div class="stalk" style="height:158px;animation-delay:0.56s"></div>
+  <div class="stalk" style="height:198px;animation-delay:0.14s"></div>
+  <div class="stalk" style="height:238px;animation-delay:0.42s"></div>
+</div>
+<div class="wheat-deco right">
+  <div class="stalk" style="height:195px;animation-delay:0.18s"></div>
+  <div class="stalk" style="height:150px;animation-delay:0.46s"></div>
+  <div class="stalk" style="height:230px;animation-delay:0.02s"></div>
+  <div class="stalk" style="height:178px;animation-delay:0.33s"></div>
+  <div class="stalk" style="height:212px;animation-delay:0.62s"></div>
+</div>
+
+<div class="card-wrap">
+  <div class="card">
+
+    <div class="logo-area">
+      <div class="logo-icon">
+        <svg viewBox="0 0 34 34" fill="none"><path d="M17 28V10" stroke="#fefae0" stroke-width="2" stroke-linecap="round"/><path d="M17 16C17 16 12 14 10 9C15 8 19 11 17 16Z" fill="#a5d6a7"/><path d="M17 20C17 20 22 17 25 12C20 11 16 14 17 20Z" fill="#81c784"/><circle cx="17" cy="8" r="2.5" fill="#d4a373"/><path d="M10 29 Q17 25 24 29" stroke="#a5d6a7" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+      </div>
+      <div class="logo-title">Agri<span>gor</span></div>
+      <div class="logo-sub">Smart Farming Starts Here</div>
+    </div>
+
+    <div class="inline-alert" id="inlineAlert">
+      <svg id="inlineAlertIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+      <span id="inlineAlertMsg"></span>
+    </div>
+
+    <form class="form" id="loginForm" novalidate>
+
+      <div>
+        <label class="field-label" for="email">Email Address</label>
+        <div class="input-wrap">
+          <span class="icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <input type="email" id="email" name="email" placeholder="you@farm.com" autocomplete="email"/>
+        </div>
+        <div class="field-error" id="emailErr">Please enter a valid email address.</div>
+      </div>
+
+      <div>
+        <label class="field-label" for="password">Password</label>
+        <div class="input-wrap">
+          <span class="icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password"/>
+          <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password">
+            <svg id="eyeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <div class="field-error" id="passErr">Password must be at least 6 characters.</div>
+      </div>
+
+      <div class="row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="remember" name="remember"/>
+          <span class="checkbox-box"></span>
+          Remember me
+        </label>
+        <a href="/forgot-password" class="forgot">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn-primary" id="submitBtn">
+        <div class="spinner"></div>
+        <span class="btn-text">Sign In to Agrigor</span>
+      </button>
+
+      <div class="divider"><span>or continue with</span></div>
+
+      <button type="button" class="btn-google" id="googleBtn" onclick="googleSignIn()">
+        <svg class="google-logo" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Sign in with Google
+      </button>
+
+    </form>
+
+    <div class="bottom-link" style="margin-top:1.2rem;">
+      Don't have an account? <a href="/register">Create one free</a>
+    </div>
+
+    <div class="card-footer">© 2025 Agrigor · Cultivating Tomorrow</div>
+  </div>
+</div>
+
+<script src="/js/agrigor.js"></script>
+<script>
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  initPasswordToggle('password', 'togglePw', 'eyeIcon');
+
+  document.getElementById('email').addEventListener('blur', () => {
+    const v = document.getElementById('email').value.trim();
+    if (v) setFieldError('email', 'emailErr', !emailRe.test(v));
+  });
+  document.getElementById('email').addEventListener('input', () => clearField('email', 'emailErr'));
+  document.getElementById('password').addEventListener('blur', () => {
+    const v = document.getElementById('password').value;
+    if (v) setFieldError('password', 'passErr', v.length < 6);
+  });
+  document.getElementById('password').addEventListener('input', () => clearField('password', 'passErr'));
+
+  document.getElementById('loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    hideInlineAlert();
+
+    const email    = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const remember = document.getElementById('remember').checked;
+
+    let valid = true;
+    if (!emailRe.test(email))  { setFieldError('email',    'emailErr', true); valid = false; }
+    if (password.length < 6)   { setFieldError('password', 'passErr',  true); valid = false; }
+    if (!valid) { showToast('Check your details', 'Please fix the highlighted fields.', 'error'); return; }
+
+    setLoading('submitBtn', true, 'Signing in…');
+
+    try {
+      const res  = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+        body: JSON.stringify({ email, password, remember }),
+        credentials: 'include',
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        if (data.token) {
+          (remember ? localStorage : sessionStorage).setItem('agrigor_token', data.token);
+        }
+        showToast('Welcome back!', data.message || 'Login successful!', 'success', 3000);
+        showInlineAlert(data.message || 'Login successful! Redirecting…', 'success');
+        setTimeout(() => { window.location.href = data.redirect || '/dashboard'; }, 1200);
+      } else {
+        const msg = data.message || 'Invalid email or password.';
+        showInlineAlert(msg, 'error');
+        showToast('Login failed', msg, 'error');
+        if (data.field) setFieldError(data.field, data.field + 'Err', true, msg);
+        setLoading('submitBtn', false);
+      }
+    } catch {
+      const msg = 'Cannot reach the server. Check your connection.';
+      showInlineAlert(msg, 'error');
+      showToast('Connection error', msg, 'error');
+      setLoading('submitBtn', false);
+    }
+  });
+</script>
+</body>
+</html>

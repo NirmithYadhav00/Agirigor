@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agrigor – Create Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/agrigor.css"/>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+<div class="toast-container" id="toastContainer"></div>
+
+<div class="wheat-deco left">
+  <div class="stalk" style="height:175px;animation-delay:0s"></div>
+  <div class="stalk" style="height:215px;animation-delay:0.28s"></div>
+  <div class="stalk" style="height:158px;animation-delay:0.56s"></div>
+  <div class="stalk" style="height:198px;animation-delay:0.14s"></div>
+</div>
+<div class="wheat-deco right">
+  <div class="stalk" style="height:195px;animation-delay:0.18s"></div>
+  <div class="stalk" style="height:150px;animation-delay:0.46s"></div>
+  <div class="stalk" style="height:230px;animation-delay:0.02s"></div>
+  <div class="stalk" style="height:178px;animation-delay:0.33s"></div>
+</div>
+
+<div class="card-wrap wide">
+  <div class="card">
+
+    <div class="logo-area">
+      <div class="logo-icon">
+        <svg viewBox="0 0 34 34" fill="none"><path d="M17 28V10" stroke="#fefae0" stroke-width="2" stroke-linecap="round"/><path d="M17 16C17 16 12 14 10 9C15 8 19 11 17 16Z" fill="#a5d6a7"/><path d="M17 20C17 20 22 17 25 12C20 11 16 14 17 20Z" fill="#81c784"/><circle cx="17" cy="8" r="2.5" fill="#d4a373"/><path d="M10 29 Q17 25 24 29" stroke="#a5d6a7" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+      </div>
+      <div class="logo-title">Agri<span>gor</span></div>
+      <div class="logo-sub">Create Your Farm Account</div>
+    </div>
+
+    <div class="inline-alert" id="inlineAlert">
+      <svg id="inlineAlertIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+      <span id="inlineAlertMsg"></span>
+    </div>
+
+    <form class="form" id="registerForm" novalidate>
+
+      <div class="form-row">
+        <div>
+          <label class="field-label" for="firstName">First Name</label>
+          <div class="input-wrap">
+            <span class="icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <input type="text" id="firstName" name="firstName" placeholder="John" autocomplete="given-name"/>
+          </div>
+          <div class="field-error" id="firstNameErr">First name is required.</div>
+        </div>
+        <div>
+          <label class="field-label" for="lastName">Last Name</label>
+          <div class="input-wrap">
+            <span class="icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <input type="text" id="lastName" name="lastName" placeholder="Farmer" autocomplete="family-name"/>
+          </div>
+          <div class="field-error" id="lastNameErr">Last name is required.</div>
+        </div>
+      </div>
+
+      <div>
+        <label class="field-label" for="email">Email Address</label>
+        <div class="input-wrap">
+          <span class="icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <input type="email" id="email" name="email" placeholder="you@farm.com" autocomplete="email"/>
+        </div>
+        <div class="field-error" id="emailErr">Please enter a valid email address.</div>
+      </div>
+
+      <div>
+        <label class="field-label" for="phone">Phone Number <span style="opacity:0.5;font-size:0.7rem;">(optional)</span></label>
+        <div class="input-wrap">
+          <span class="icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label class="field-label" for="password">Password</label>
+          <div class="input-wrap">
+            <span class="icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+            <input type="password" id="password" name="password" placeholder="Min. 8 characters" autocomplete="new-password"/>
+            <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password">
+              <svg id="eyeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <div class="strength-bar" id="strengthBar">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="strength-label" id="strengthLabel"></div>
+          <div class="field-error" id="passErr">Password must be at least 8 characters.</div>
+        </div>
+        <div>
+          <label class="field-label" for="confirmPassword">Confirm Password</label>
+          <div class="input-wrap">
+            <span class="icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" autocomplete="new-password"/>
+            <button type="button" class="toggle-pw" id="toggleConfirm" aria-label="Toggle confirm password">
+              <svg id="eyeIconConfirm" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <div class="field-error" id="confirmErr">Passwords do not match.</div>
+        </div>
+      </div>
+
+      <label class="checkbox-label">
+        <input type="checkbox" id="terms" name="terms"/>
+        <span class="checkbox-box"></span>
+        <span>I agree to the <a href="/terms" style="color:var(--gold)">Terms of Service</a> &amp; <a href="/privacy" style="color:var(--gold)">Privacy Policy</a></span>
+      </label>
+      <div class="field-error" id="termsErr">You must accept the terms to continue.</div>
+
+      <button type="submit" class="btn-primary" id="submitBtn">
+        <div class="spinner"></div>
+        <span class="btn-text">Create My Account</span>
+      </button>
+
+      <div class="divider"><span>or sign up with</span></div>
+
+      <button type="button" class="btn-google" onclick="googleSignIn()">
+        <svg class="google-logo" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Continue with Google
+      </button>
+
+    </form>
+
+    <div class="bottom-link" style="margin-top:1.2rem;">
+      Already have an account? <a href="/login">Sign in</a>
+    </div>
+    <div class="card-footer">© 2025 Agrigor · Cultivating Tomorrow</div>
+  </div>
+</div>
+
+<script src="/js/agrigor.js"></script>
+<script>
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  initPasswordToggle('password',        'togglePw',      'eyeIcon');
+  initPasswordToggle('confirmPassword', 'toggleConfirm', 'eyeIconConfirm');
+
+  document.getElementById('password').addEventListener('input', function() {
+    updateStrengthBar('strengthBar', 'strengthLabel', this.value);
+    clearField('password', 'passErr');
+  });
+  document.getElementById('password').addEventListener('blur', function() {
+    if (this.value) setFieldError('password', 'passErr', this.value.length < 8);
+  });
+  document.getElementById('confirmPassword').addEventListener('input', function() {
+    clearField('confirmPassword', 'confirmErr');
+  });
+
+  ['email','firstName','lastName'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => clearField(id, id + 'Err'));
+  });
+
+  document.getElementById('registerForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    hideInlineAlert();
+
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const email     = document.getElementById('email').value.trim();
+    const password  = document.getElementById('password').value;
+    const confirm   = document.getElementById('confirmPassword').value;
+    const terms     = document.getElementById('terms').checked;
+
+    let valid = true;
+    if (!firstName) { setFieldError('firstName', 'firstNameErr', true); valid = false; }
+    if (!lastName)  { setFieldError('lastName',  'lastNameErr',  true); valid = false; }
+    if (!emailRe.test(email)) { setFieldError('email', 'emailErr', true); valid = false; }
+    if (password.length < 8)  { setFieldError('password', 'passErr', true, 'Password must be at least 8 characters.'); valid = false; }
+    if (password !== confirm)  { setFieldError('confirmPassword', 'confirmErr', true); valid = false; }
+    if (!terms) { setFieldError('terms', 'termsErr', true); valid = false; }
+    if (!valid) { showToast('Check your details', 'Please fix the highlighted fields.', 'error'); return; }
+
+    setLoading('submitBtn', true, 'Creating account…');
+
+    try {
+      const res  = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+        body: JSON.stringify({ firstName, lastName, email, password, phone: document.getElementById('phone').value.trim() }),
+        credentials: 'include',
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        showToast('Welcome to Agrigor!', data.message || 'Account created successfully!', 'success', 3500);
+        setTimeout(() => { window.location.href = data.redirect || '/login?success=registered'; }, 1400);
+      } else {
+        const msg = data.message || 'Registration failed. Please try again.';
+        showInlineAlert(msg, 'error');
+        showToast('Registration failed', msg, 'error');
+        if (data.field) setFieldError(data.field, data.field + 'Err', true, msg);
+        setLoading('submitBtn', false);
+      }
+    } catch {
+      const msg = 'Cannot reach the server. Check your connection.';
+      showInlineAlert(msg, 'error');
+      showToast('Connection error', msg, 'error');
+      setLoading('submitBtn', false);
+    }
+  });
+</script>
+</body>
+</html>
